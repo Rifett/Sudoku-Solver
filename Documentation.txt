@@ -1,0 +1,50 @@
+DOCUMENTATION
+
+#Description#
+Task of this program is to solve a given Sudoku maze by the means of AI local-search techniques.
+This program uses a hill-climbing algorythm with reset method of avoiding local-maximum stucks.
+Local changes are being created by swapping two elements of random 3x3 block on Sudoku field.
+One of the elements is chosen by random and the other is chosen to be the best possible swap from all elements of 3x3 block.
+Program stops when there is no violations of Sudoku rules on the field (when the maze is complete and there is no number repetitions in any direction and in any 3x3 block).
+
+#Function-RandomCreation#
+Returns nothing.
+Function's parameters:
+	field-two dimensional struct array that represents the whole field.
+RandomCreation function creates a random field with no repetitions in any single 3x3 block.
+In order to create a field, the program first goes through all elements of a field and marks as unchangable values the ones which are given in the task description.
+By the second move, the program goes through all elements of every 3x3 block and inserts there randomly generated unique values.
+
+#Function-FindChosenOne#
+Returns the total number of Sudoku rules violation on the field.
+Function's parameters:
+	field-two dimensional struct array that represents the whole field.
+The function goes through all elements of a field and for every of them checks if there are the same numbers in the same row or column.
+In order to accomplish it's task, the function has four 'for' loops, two of them represent the current element that we check, the other two represent elements that we compare the current one with.
+Also, in case of finding the same value that is predefined (given in the task description), function adds bigger value to the counter, in order to terminate this collision first.
+
+#Function-SwapFunc#
+Returns 1 or 0, depending on whether there is a better numbers arrangement or not (0 if there is, 1 if there is no).
+Function's parameters:
+	field-two dimensional struct array that represents the whole field.
+	PartX,PartY-randomly chosen 3x3 block's position.
+	x,y-randomly chosen coordinates in 3x3 block.
+	space-dimension of a block (in this case, it's always 3 because in this program only 3x3 blocks are used).
+This function tries all possible swaps of a randomly chosen number in it's block, finds the best one and then does the actual swap.
+In case there is no good swap, it returns 1.
+
+#Some notes#
+The task's description is inserted into program in the main's beginning.
+
+#Program's run example#
+
+//input field    	//output field
+0 0 0 0 0 0 0 9 0	7 4 8 6 3 5 2 9 1
+1 9 0 4 7 0 6 0 8	1 9 3 4 7 2 6 5 8
+0 5 2 8 1 9 4 0 7	6 5 2 8 1 9 4 3 7
+2 0 0 0 4 8 0 0 0	2 6 5 9 4 8 7 1 3
+0 0 9 0 0 0 5 0 0	8 7 9 1 2 3 5 4 6
+0 0 0 7 5 0 0 0 9	3 1 4 7 5 6 8 2 9
+9 0 7 3 6 4 1 8 0	9 2 7 3 6 4 1 8 5
+5 0 6 0 8 1 0 7 4	5 3 6 2 8 1 9 7 4
+0 8 0 0 0 0 0 0 0	4 8 1 5 9 7 3 6 2
