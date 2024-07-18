@@ -2,7 +2,7 @@ DOCUMENTATION
 
 #Description#
 Task of this program is to solve a given Sudoku maze by the means of AI local-search techniques.
-This program uses a hill-climbing algorythm with reset method of avoiding local-maximum stucks.
+This program uses a hill-climbing algorithm with reset method of avoiding local-maximum stucks.
 Local changes are being created by swapping two elements of random 3x3 block on Sudoku field.
 One of the elements is chosen by random and the other is chosen to be the best possible swap from all elements of 3x3 block.
 Program stops when there is no violations of Sudoku rules on the field (when the maze is complete and there is no number repetitions in any direction and in any 3x3 block).
